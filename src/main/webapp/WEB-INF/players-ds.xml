@@ -1,0 +1,10 @@
+<datasources>
+    <datasource jndi-name="PlayersDataSource" pool-name="PlayersDataSource">
+        <driver>h2</driver>
+        <connection-url>jdbc:h2:~/h2database/PlayerDB;AUTO_SERVER=TRUE</connection-url>
+        <security>
+            <user-name>sa</user-name>
+            <password>sa</password>
+        </security>
+    </datasource>
+</datasources>

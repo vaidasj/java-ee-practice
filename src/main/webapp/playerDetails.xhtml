@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://java.sun.com/jsf/core"
+>
+<h:head/>
+<h:body>
+    <h2>#{updatePlayerDetails.player.name}</h2>
+    <h:form>
+        <h:outputText value="jersey number: "/>
+        <h:inputText a:placeholder="enter the value" value="#{updatePlayerDetails.player.jerseyNumber}" required="true" />
+        <h:commandButton value="update" action="#{updatePlayerDetails.updatePlayerJerseyNumber()}">
+            <f:param name="playerId" value="#{updatePlayerDetails.player.id}" />
+        </h:commandButton>
+        <h:outputText value="Value was already modified by other user. If you want to override it - try again" rendered="#{param['error'] == 'optimistic-lock-exception'}" />
+    </h:form>
+    <h:form>
+        <h:outputText value="#{generatePlayerJerseyNumber.jerseyGenerationStatus}" />
+        <h:commandButton value="Generate player number?" disabled="#{generatePlayerJerseyNumber.jerseyGenerationRunning}" action="#{generatePlayerJerseyNumber.generateNewJerseyNumber()}">
+            <f:param name="playerId" value="#{updatePlayerDetails.player.id}" />
+        </h:commandButton>
+    </h:form>
+    <h:link outcome="index" value="Back to home page"/>
+</h:body>
+</html>
