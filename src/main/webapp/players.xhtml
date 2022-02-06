@@ -17,8 +17,10 @@
     </ol>
     <h:form>
         <h:inputText a:placeholder="name" value="#{playersForTeam.playerToCreate.name}" required="true" />
-        <h:commandButton value="Add player to the team" action="#{playersForTeam.createPlayer}" >
-            <f:param name="teamId" value="#{playersForTeam.team.id}" />
+        <h:commandButton value="Add player to the team"
+                         actionListener="#{playersForTeam.createPlayer}"
+                         action="#{'players?faces-redirect=true&amp;teamId='.concat(playersForTeam.team.id)}">
+                <f:param name="teamId" value="#{playersForTeam.team.id}" />
         </h:commandButton>
     </h:form>
     <h:link outcome="index" value="Back to teams page"/>

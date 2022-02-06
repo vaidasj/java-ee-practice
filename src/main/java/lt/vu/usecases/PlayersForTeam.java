@@ -41,9 +41,8 @@ public class PlayersForTeam implements Serializable {
 
     @Transactional
     @LoggedInvocation
-    public String createPlayer() {
+    public void createPlayer() {
         playerToCreate.setTeam(this.team);
         playersDAO.persist(playerToCreate);
-        return "players?faces-redirect=true&teamId=" + this.team.getId();
     }
 }
