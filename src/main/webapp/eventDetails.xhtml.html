@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://java.sun.com/jsf/core"
+>
+<h:head/>
+<h:body>
+  <h2>#{updateEventName.event.name}</h2>
+  <h2>ID: #{updateEventName.event.id}</h2>
+  <h:form>
+    <h:outputText value="event name: "/>
+    <h:inputText a:placeholder="enter the value" value="#{updateEventName.event.name}" required="true" />
+    <h:commandButton value="update" action="#{updateEventName.updateName()}">
+      <f:param name="event" value="#{updateEventName.event.id}" />
+    </h:commandButton>
+<!--    <h:outputText value="Value was already modified by other user. If you want to override it - try again" rendered="#{param['error'] == 'optimistic-lock-exception'}" />-->
+  </h:form>
+  <h:form>
+    <h:outputText value="#{generateEventName.nameGenerationStatus}" />
+<!--    <h:commandButton value="Generate random event name?" disabled="#{generateEventName.nameGenerationRunning}" action="#{generateEventName.generateRandomName()}">-->
+      <f:param name="eventId" value="#{updateTrainingName.training.id}" />
+    </h:commandButton>
+  </h:form>
+</h:body>
+</html>

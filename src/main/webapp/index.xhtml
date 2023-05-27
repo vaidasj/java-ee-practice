@@ -3,6 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
 >
 <h:head/>
 <h:body>
@@ -17,5 +19,18 @@
         <h:commandButton value="Add new team" actionListener="#{teams.createTeam}" action="index?faces-redirect=true"/>
     </h:form>
     <h:link outcome="myBatis/teams" value="MyBatis implementation"/>
+    <h2>Events</h2>
+    <h:dataTable value="#{events.allEvents}" var="event">
+        <h:column>
+            <b><h:link value="Event: #{event.name}" outcome="eventDetails?eventId=#{event.id}" /></b>
+            <br/>
+        </h:column>
+    </h:dataTable>
+
+    <h:form>
+        <h:inputText value="#{events.eventToCreate.name}" required="true"/>
+        <h:commandButton value="Add event" actionListener="#{events.createEvent}" action="index?faces-redirect=true"/>
+    </h:form>
+
 </h:body>
 </html>

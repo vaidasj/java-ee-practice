@@ -6,6 +6,8 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -30,6 +32,9 @@ public class Player implements Serializable {
     @ManyToOne
     @JoinColumn(name="TEAM_ID")
     private Team team;
+
+    @ManyToMany(mappedBy = "players")
+    private List<Event> events = new ArrayList<>();
 
     @Version
     @Column(name = "OPT_LOCK_VERSION")
